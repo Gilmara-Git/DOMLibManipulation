@@ -130,24 +130,15 @@
     });
     console.log(filtered);
 
-    let reduced = $a.reduce(function (acum, item) {
-      Object.prototype.toString.call(acum) === "[object HTMLAnchorElement]"
-        ? (acum = acum.innerHTML)
-        : (acum = acum);
+    let reduce = $a.reduce(function (acum, item, index) {
+      return acum + " " + item.getAttribute("data-js") + ' ' + 'index:' + index;
+    }, "");
+    console.log(reduce);
 
-      return acum + " " + item.innerHTML;
-    });
 
-    console.log(reduced);
-
-    let reduceRight = $a.reduceRight(function (acum, item) {
-      console.log(acum);
-      Object.prototype.toString.call(acum) === "[object HTMLAnchorElement]"
-        ? (acum = acum.innerHTML)
-        : (acum = acum);
-      return acum + " " + item.innerHTML;
-    });
-
+    let reduceRight = $a.reduceRight(function (acum, item, index){
+      return acum + " " + item.getAttribute('data-js') + ' ' + 'index:' + index;
+    }, "");
     console.log(reduceRight);
 
     let every = $a.every(function (element) {
